@@ -8,16 +8,13 @@ url="https://github.com/your-username/tlrunner"
 license=('GPL3')
 depends=('python' 'python-pyqt5')  # Gerekli bağımlılıklar
 makedepends=('python-setuptools')  # Python bağımlılıklarını yükleyecek
-source=("tlrunner.py" "tlrunner.desktop" "tlrunner.install" "requirements.txt")  # LICENSE dosyasını çıkarttık
-# md5sums kısmında LICENSE dosyasını da çıkardık
+source=("start.sh" "tlrunner.desktop" "tlrunner.install" "requirements.txt")  # LICENSE dosyasını çıkarttık
 md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')  # Bu kısmı da güncelledik
 
-# Paket kurulum betiği
 package() {
-    # Python sanal ortamı oluşturma ve bağımlılıkları yükleme
     mkdir -p "$pkgdir"/usr/local/bin
-    cp "$srcdir"/tlrunner.py "$pkgdir"/usr/local/bin/tlrunner.py
-    chmod +x "$pkgdir"/usr/local/bin/tlrunner.py
+    cp "$srcdir"/start.sh "$pkgdir"/usr/local/bin/start.sh
+    chmod +x "$pkgdir"/usr/local/bin/start.sh
 
     # Gerekli Python bağımlılıklarını kurma
     if [ -f "$srcdir/requirements.txt" ]; then
@@ -34,13 +31,11 @@ package() {
     install -Dm644 "$srcdir"/tlrunner.install "$pkgdir"/usr/share/udiskie/tlrunner.install
 }
 
-# Paket kurulumu sonrasında yapılacak işlemler
 post_install() {
     echo "TLRunner kurulumu tamamlandı!"
-    echo "Uygulamayı çalıştırmak için: tlrunner.py"
+    echo "Uygulamayı çalıştırmak için: start.sh"
 }
 
-# Paket kaldırıldığında yapılacak işlemler
 pre_remove() {
     echo "TLRunner kaldırılıyor..."
 }
