@@ -10,9 +10,12 @@ Copy the GitHub repository (or download it manually)
 ```html
 git clone https://github.com/enelminun/tlrunner.git
 cd tlrunner
+makepkg -si
 ```
-
-Enter the folder and type in the terminal:
+# Manuel Installation
+Copy the GitHub repository (or download it manually)
+Enter the folder
+Type: 
 ```html
 makepkg -si
 ```
