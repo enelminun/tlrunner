@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=TLRunner
-Comment=A launcher for TLauncher with system tray icon
-Exec=python3 ./tlrunner.py
-Icon=./tlrunner.png
-Terminal=false
-Type=Application
-Categories=Game;Utility;
-StartupNotify=true
