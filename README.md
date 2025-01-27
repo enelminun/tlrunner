@@ -7,7 +7,7 @@ A dynamic bash launcher for TLauncher
 # Installation
 
 Copy the GitHub repository (or download it manually)
-```html
+```bash
 git clone https://github.com/enelminun/tlrunner.git
 cd tlrunner
 makepkg -si
@@ -16,7 +16,7 @@ makepkg -si
 Copy the GitHub repository (or download it manually)
 Enter the folder and 
 Type: 
-```html
+```bash
 makepkg -si
 ```
 
