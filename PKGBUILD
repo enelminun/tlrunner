@@ -6,7 +6,7 @@ pkgdesc="A launcher for TLauncher with system tray icon"
 arch=('any')
 url="https://github.com/yourusername/tlrunner"
 license=('GPL3')
-depends=('python' 'python-git' 'java-runtime')
+depends=('python' 'java-runtime')
 makedepends=('python-setuptools')
 source=("https://github.com/enelminun/tlrunner/archive/v$pkgver.tar.gz" 
         "tlrunner.png")
