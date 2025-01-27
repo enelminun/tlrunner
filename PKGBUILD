@@ -15,7 +15,7 @@ install=src/tlrunner.install
 
 # Paket kurulum betiği
 package() {
-    # Uygulama dosyasını ve gerekli diğer dosyaları hedef dizinlere kopyalayın
+    # Dosyaların doğru bir şekilde hedef dizine kopyalanması
     mkdir -p "$pkgdir"/usr/local/bin
     cp "$srcdir"/src/tlrunner.py "$pkgdir"/usr/local/bin/tlrunner
     
