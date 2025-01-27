@@ -14,7 +14,7 @@ makepkg -si
 ```
 # Manuel Installation
 Copy the GitHub repository (or download it manually)
-Enter the folder
+Enter the folder and 
 Type: 
 ```html
 makepkg -si
