@@ -1,38 +1,36 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Kayra / github:enelminun
 pkgname=tlrunner
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="A launcher for TLauncher with system tray icon"
+pkgdesc="Python-based TLauncher for Minecraft with system tray support"
 arch=('x86_64')
 url="https://github.com/enelminun/tlrunner"
 license=('GPL3')
-depends=('python' 'python-pyqt5')  # Gerekli Python bağımlılıklarını burada belirtin
-makedepends=('python-setuptools')  # Gerekli yapım bağımlılıkları
-source=("src/start.sh" "src/tlrunner.png" "src/tlrunner.desktop" "src/LICENSE")
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')  # Dosya kontrolleri için md5 hashleri
+depends=('python' 'python-pyqt5') 
+makedepends=('python-setuptools')  
+source=("tlrunner.py" "requirements.txt" "LICENSE")  r
+md5sums=('SKIP' 'SKIP' 'SKIP') 
 
-install=src/tlrunner.install
 
-# Paket kurulum betiği
 package() {
-    # Dosyaların doğru bir şekilde hedef dizine kopyalanması
     mkdir -p "$pkgdir"/usr/local/bin
-    cp "$srcdir"/src/start.sh "$pkgdir"/usr/local/bin/tlrunner_start.sh
-    chmod +x "$pkgdir"/usr/local/bin/tlrunner_start.sh
-
-    mkdir -p "$pkgdir"/usr/local/share/icons
-    cp "$srcdir"/src/tlrunner.png "$pkgdir"/usr/local/share/icons/tlrunner.png
-
-    mkdir -p "$pkgdir"/usr/share/applications
-    cp "$srcdir"/src/tlrunner.desktop "$pkgdir"/usr/share/applications/tlrunner.desktop
+    cp "$srcdir"/tlrunner.py "$pkgdir"/usr/local/bin/tlrunner.py
+    chmod +x "$pkgdir"/usr/local/bin/tlrunner.py
 
     mkdir -p "$pkgdir"/usr/local/share/licenses/tlrunner
-    cp "$srcdir"/src/LICENSE "$pkgdir"/usr/local/share/licenses/tlrunner/LICENSE
+    cp "$srcdir"/LICENSE "$pkgdir"/usr/local/share/licenses/tlrunner/LICENSE
+
+    if [ -f "$srcdir/requirements.txt" ]; then
+        cd "$pkgdir"/usr/local/bin
+        python3 -m venv venv  
+        source venv/bin/activate
+        pip install -r "$srcdir"/requirements.txt 
+    fi
 }
 
-# Paket yüklenmeden önce veya sonra yapılacak işlemler
 post_install() {
     echo "TLRunner kurulumu tamamlandı!"
+    echo "Uygulamayı çalıştırmak için: tlrunner.py"
 }
 
 pre_remove() {
